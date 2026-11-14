@@ -1,9 +1,9 @@
-package org.delcom.ifs25030p5pbo2026springbootcashflow.adapter.repository;
+package org.delcom.ifs25030springbootcashflow.adapter.repository;
 
-import org.delcom.ifs25030p5pbo2026springbootcashflow.domain.entity.Role;
-import org.delcom.ifs25030p5pbo2026springbootcashflow.domain.entity.Transaction;
-import org.delcom.ifs25030p5pbo2026springbootcashflow.domain.entity.TransactionType;
-import org.delcom.ifs25030p5pbo2026springbootcashflow.domain.entity.User;
+import org.delcom.ifs25030springbootcashflow.domain.entity.Role;
+import org.delcom.ifs25030springbootcashflow.domain.entity.Transaction;
+import org.delcom.ifs25030springbootcashflow.domain.entity.TransactionType;
+import org.delcom.ifs25030springbootcashflow.domain.entity.User;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package org.delcom.ifs25030p5pbo2026springbootcashflow.domain.entity;
+package org.delcom.ifs25030springbootcashflow.domain.entity;
 
 import org.junit.jupiter.api.Test;
 
