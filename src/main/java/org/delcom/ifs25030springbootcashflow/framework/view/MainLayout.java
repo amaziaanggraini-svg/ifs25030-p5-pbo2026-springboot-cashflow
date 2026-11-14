@@ -263,10 +263,16 @@ public class MainLayout extends AppLayout implements BeforeEnterObserver, AfterN
                 .filter(User::isAdmin)
                 .ifPresent(user -> menu.add(navItem("Daftar Pengguna", UsersView.class, "users", VaadinIcon.USERS)));
 
+
         Nav navigation = new Nav(brand, menu);
         navigation.getElement().setAttribute("aria-label", "Menu utama");
         navigation.getStyle().set("flex", "1").set("width", "100%");
         drawer.add(navigation);
+        Nav navigation = new Nav(menu);
+        navigation.getElement().setAttribute("aria-label", "Menu utama");
+        navigation.getStyle().set("flex", "1").set("width", "100%");
+        drawer.add(brand, navigation);
+        6b50741e6ce7f45a6f48384c90540d6ac3179c21
         drawer.expand(navigation);
         addToDrawer(drawer);
     }
