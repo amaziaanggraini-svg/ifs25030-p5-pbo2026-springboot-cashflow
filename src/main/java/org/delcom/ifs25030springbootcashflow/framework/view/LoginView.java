@@ -64,7 +64,8 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
             try {
                 User user = authUseCase.login(username.getValue(), password.getValue());
                 AuthSession.login(user);
-                UI.getCurrent().navigate(FinanceView.class);
+                // Muat ulang penuh ke "/" agar MainLayout dibangun baru dengan sesi login.
+                UI.getCurrent().getPage().setLocation("/");
             } catch (ValidationException ex) {
                 loadingBar.setVisible(false);
                 loginButton.setEnabled(true);
