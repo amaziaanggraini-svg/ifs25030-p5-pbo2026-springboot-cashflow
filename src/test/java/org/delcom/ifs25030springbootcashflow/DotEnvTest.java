@@ -16,7 +16,7 @@ class DotEnvTest {
 
     @AfterEach
     void cleanup() {
-        for (String key : new String[]{"CF_A", "CF_B", "CF_C", "CF_D", "CF_KEEP", "CF_EMPTY"}) {
+        for (String key : new String[]{"CF_A", "CF_B", "CF_C", "CF_D", "CF_E", "CF_F", "CF_KEEP", "CF_EMPTY"}) {
             System.clearProperty(key);
         }
     }
@@ -33,6 +33,8 @@ class DotEnvTest {
                 "tanpa-sama-dengan",
                 "=tanpa-key",
                 "CF_D=\"",
+                "CF_E=\"tanpa-penutup",
+                "CF_F='tanpa-penutup",
                 "CF_EMPTY="));
         DotEnv.load(env);
 
@@ -40,6 +42,8 @@ class DotEnvTest {
         assertEquals("dua spasi", System.getProperty("CF_B"));
         assertEquals("tiga", System.getProperty("CF_C"));
         assertEquals("\"", System.getProperty("CF_D"));
+        assertEquals("\"tanpa-penutup", System.getProperty("CF_E"));
+        assertEquals("'tanpa-penutup", System.getProperty("CF_F"));
         assertEquals("", System.getProperty("CF_EMPTY"));
     }
 

@@ -126,12 +126,13 @@ public class JdbcUserRepository implements IUserRepository {
     }
 
     private static Optional<User> readOptional(PreparedStatement statement) throws SQLException {
+        Optional<User> result = Optional.empty();
         try (ResultSet rs = statement.executeQuery()) {
             if (rs.next()) {
-                return Optional.of(mapRow(rs));
+                result = Optional.of(mapRow(rs));
             }
-            return Optional.empty();
         }
+        return result;
     }
 
     private static User mapRow(ResultSet rs) throws SQLException {

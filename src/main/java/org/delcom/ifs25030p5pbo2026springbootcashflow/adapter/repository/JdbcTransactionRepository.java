@@ -59,18 +59,19 @@ public class JdbcTransactionRepository implements ITransactionRepository {
     @Override
     public Optional<Transaction> findById(Integer id) {
         String sql = "SELECT " + COLUMNS + " FROM transactions WHERE id = ?";
+        Optional<Transaction> result = Optional.empty();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, id);
             try (ResultSet rs = statement.executeQuery()) {
                 if (rs.next()) {
-                    return Optional.of(mapRow(rs));
+                    result = Optional.of(mapRow(rs));
                 }
-                return Optional.empty();
             }
         } catch (SQLException ex) {
             throw new IllegalStateException("Gagal membaca transaksi", ex);
         }
+        return result;
     }
 
     @Override
