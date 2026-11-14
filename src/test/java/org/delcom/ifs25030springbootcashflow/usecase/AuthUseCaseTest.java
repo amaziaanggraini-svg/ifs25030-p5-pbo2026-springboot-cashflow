@@ -1,9 +1,9 @@
-package org.delcom.ifs25030springbootcashflow.usecase;
+package org.delcom.ifs25030p5pbo2026springbootcashflow.usecase;
 
-import org.delcom.ifs25030springbootcashflow.adapter.repository.UserRepository;
-import org.delcom.ifs25030springbootcashflow.domain.entity.Role;
-import org.delcom.ifs25030springbootcashflow.domain.entity.User;
-import org.delcom.ifs25030springbootcashflow.domain.exception.ValidationException;
+import org.delcom.ifs25030p5pbo2026springbootcashflow.adapter.repository.UserRepository;
+import org.delcom.ifs25030p5pbo2026springbootcashflow.domain.entity.Role;
+import org.delcom.ifs25030p5pbo2026springbootcashflow.domain.entity.User;
+import org.delcom.ifs25030p5pbo2026springbootcashflow.domain.exception.ValidationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

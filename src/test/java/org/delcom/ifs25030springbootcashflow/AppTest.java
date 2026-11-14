@@ -1,4 +1,4 @@
-package org.delcom.ifs25030springbootcashflow;
+package org.delcom.ifs25030p5pbo2026springbootcashflow;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;

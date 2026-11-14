@@ -1,11 +1,11 @@
-package org.delcom.ifs25030springbootcashflow.config;
+package org.delcom.ifs25030p5pbo2026springbootcashflow.config;
 
-import org.delcom.ifs25030springbootcashflow.adapter.presenter.FinancePresenter;
-import org.delcom.ifs25030springbootcashflow.adapter.storage.FileStorage;
-import org.delcom.ifs25030springbootcashflow.domain.repository.IUserRepository;
-import org.delcom.ifs25030springbootcashflow.usecase.AuthUseCase;
-import org.delcom.ifs25030springbootcashflow.usecase.FinanceUseCase;
-import org.delcom.ifs25030springbootcashflow.usecase.UserUseCase;
+import org.delcom.ifs25030p5pbo2026springbootcashflow.adapter.presenter.FinancePresenter;
+import org.delcom.ifs25030p5pbo2026springbootcashflow.adapter.storage.FileStorage;
+import org.delcom.ifs25030p5pbo2026springbootcashflow.domain.repository.IUserRepository;
+import org.delcom.ifs25030p5pbo2026springbootcashflow.usecase.AuthUseCase;
+import org.delcom.ifs25030p5pbo2026springbootcashflow.usecase.FinanceUseCase;
+import org.delcom.ifs25030p5pbo2026springbootcashflow.usecase.UserUseCase;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
