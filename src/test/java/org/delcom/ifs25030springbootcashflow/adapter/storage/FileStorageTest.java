@@ -1,4 +1,4 @@
-package org.delcom.ifs25030p5pbo2026springbootcashflow.adapter.storage;
+package org.delcom.ifs25030springbootcashflow.adapter.storage;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;

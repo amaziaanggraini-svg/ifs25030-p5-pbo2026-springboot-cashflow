@@ -1,4 +1,4 @@
-package org.delcom.ifs25030p5pbo2026springbootcashflow;
+package org.delcom.ifs25030springbootcashflow;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;

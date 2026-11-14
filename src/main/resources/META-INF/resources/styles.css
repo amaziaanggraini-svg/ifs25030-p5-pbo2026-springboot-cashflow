@@ -185,3 +185,16 @@ vaadin-context-menu-item > * {
   justify-content: flex-start !important;
   width: auto !important;
 }
+
+/* Warna tema dengan kontras cukup (WCAG AA) untuk tombol dan teks status */
+html {
+  --lumo-primary-color: #2563EB;
+  --lumo-primary-text-color: #1D4ED8;
+  --lumo-primary-contrast-color: #FFFFFF;
+  --lumo-success-color: #15803D;
+  --lumo-success-text-color: #166534;
+  --lumo-success-contrast-color: #FFFFFF;
+  --lumo-error-color: #B91C1C;
+  --lumo-error-text-color: #B91C1C;
+  --lumo-error-contrast-color: #FFFFFF;
+}

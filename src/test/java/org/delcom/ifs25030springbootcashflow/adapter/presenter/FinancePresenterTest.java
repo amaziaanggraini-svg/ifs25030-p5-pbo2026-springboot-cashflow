@@ -1,9 +1,9 @@
-package org.delcom.ifs25030p5pbo2026springbootcashflow.adapter.presenter;
+package org.delcom.ifs25030springbootcashflow.adapter.presenter;
 
-import org.delcom.ifs25030p5pbo2026springbootcashflow.domain.entity.Balance;
-import org.delcom.ifs25030p5pbo2026springbootcashflow.domain.entity.SortOption;
-import org.delcom.ifs25030p5pbo2026springbootcashflow.domain.entity.Transaction;
-import org.delcom.ifs25030p5pbo2026springbootcashflow.domain.entity.TransactionType;
+import org.delcom.ifs25030springbootcashflow.domain.entity.Balance;
+import org.delcom.ifs25030springbootcashflow.domain.entity.SortOption;
+import org.delcom.ifs25030springbootcashflow.domain.entity.Transaction;
+import org.delcom.ifs25030springbootcashflow.domain.entity.TransactionType;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
