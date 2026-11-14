@@ -1,0 +1,55 @@
+# Maven
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+HELP.md
+
+# Environment (jangan commit rahasia; .env.example tetap ter-track)
+.env
+
+# Upload runtime
+uploads/
+
+# Vaadin / frontend
+.vaadin/
+node/
+node_modules/
+src/main/frontend/generated/
+src/main/bundles/
+package.json
+package-lock.json
+pnpm-lock.yaml
+tsconfig.json
+types.d.ts
+vite.config.ts
+vite.generated.ts
+frontend/generated/
+**/vaadin-dev-server-settings.json
+webpack.config.js
+webpack.generated.js
+
+# Database H2 (test)
+*.mv.db
+*.trace.db
+*.lock.db
+
+# IDE
+.idea/
+*.iws
+*.iml
+*.ipr
+.classpath
+.factorypath
+.project
+.settings/
+.apt_generated
+.springBeans
+.sts4-cache
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+build/
+.vscode/
