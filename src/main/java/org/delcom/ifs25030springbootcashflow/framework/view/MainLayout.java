@@ -4,11 +4,15 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.contextmenu.ContextMenu;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Nav;
+import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -129,10 +133,6 @@ public class MainLayout extends AppLayout implements BeforeEnterObserver, AfterN
                 .set("height", "40px")
                 .set("flex-shrink", "0");
         headerAvatar.getElement().setAttribute("title", "Menu akun");
-        headerAvatar.getElement().setAttribute("role", "button");
-        headerAvatar.getElement().setAttribute("tabindex", "0");
-        headerAvatar.getElement().setAttribute("aria-label", "Menu akun");
-        headerAvatar.getElement().setAttribute("aria-haspopup", "menu");
 
         ContextMenu accountMenu = new ContextMenu(headerAvatar);
         accountMenu.setOpenOnClick(true);
@@ -144,13 +144,26 @@ public class MainLayout extends AppLayout implements BeforeEnterObserver, AfterN
             var profileItem = accountMenu.addItem(menuItemContent(VaadinIcon.USER, "Profil", "#4B5563", "#1F2937"), event ->
                     UI.getCurrent().navigate(ProfileView.class));
             profileItem.getStyle().set("cursor", "pointer");
-            var logoutItem = accountMenu.addItem(menuItemContent(VaadinIcon.SIGN_OUT, "Keluar", "#DC2626", "#DC2626"), event -> {
-                AuthSession.logout();
-                // Full reload agar UI tidak blank setelah keluar dari MainLayout.
-                UI.getCurrent().getPage().setLocation("login");
-            });
+            var logoutItem = accountMenu.addItem(menuItemContent(VaadinIcon.SIGN_OUT, "Keluar", "#DC2626", "#DC2626"),
+                    event -> confirmLogout());
             logoutItem.getStyle().set("cursor", "pointer");
         });
+    }
+
+    private void confirmLogout() {
+        Dialog dialog = new Dialog();
+        dialog.setHeaderTitle("Keluar dari aplikasi");
+        dialog.add(new Paragraph("Yakin ingin keluar dari akun ini?"));
+        Button cancel = new Button("Batal", event -> dialog.close());
+        Button confirm = new Button("Keluar", event -> {
+            dialog.close();
+            AuthSession.logout();
+            // Full reload agar UI tidak blank setelah keluar dari MainLayout.
+            UI.getCurrent().getPage().setLocation("login");
+        });
+        confirm.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
+        dialog.getFooter().add(cancel, confirm);
+        dialog.open();
     }
 
     private VerticalLayout accountIdentity(User user) {
