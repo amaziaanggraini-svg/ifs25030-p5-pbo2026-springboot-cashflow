@@ -51,11 +51,18 @@ class AuthUseCaseTest {
     }
 
     @Test
-    void ensureRootAdminSeedsOnce() throws Exception {
+    void ensureRootAdminSeedsOnceAndSyncsPassword() throws Exception {
         User first = auth.ensureRootAdmin("admin", "admin");
         assertTrue(first.isAdmin());
+        // password sama: tidak ada perubahan
+        User same = auth.ensureRootAdmin("admin", "admin");
+        assertEquals(first.getId(), same.getId());
+        assertEquals(first.getPasswordHash(), same.getPasswordHash());
+        // password berbeda: akun tetap sama, password diperbarui
         User second = auth.ensureRootAdmin("admin", "lain");
         assertEquals(first.getId(), second.getId());
+        assertEquals("admin", auth.login("admin", "lain").getUsername());
+        assertThrows(ValidationException.class, () -> auth.login("admin", "admin"));
         assertThrows(ValidationException.class, () -> auth.ensureRootAdmin(null, "x"));
         assertThrows(ValidationException.class, () -> auth.ensureRootAdmin(" ", "x"));
         assertThrows(ValidationException.class, () -> auth.ensureRootAdmin("a", null));

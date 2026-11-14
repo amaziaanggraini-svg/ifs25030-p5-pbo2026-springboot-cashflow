@@ -6,6 +6,8 @@ import org.delcom.ifs25030p5pbo2026springbootcashflow.domain.entity.User;
 import org.delcom.ifs25030p5pbo2026springbootcashflow.domain.exception.ValidationException;
 import org.delcom.ifs25030p5pbo2026springbootcashflow.domain.repository.IUserRepository;
 
+import java.util.Optional;
+
 /**
  * Use case autentikasi: registrasi, login, dan seed akun root admin.
  */
@@ -44,7 +46,10 @@ public class AuthUseCase {
         return user;
     }
 
-    /** Memastikan akun admin default dari konfigurasi .env tersedia. */
+    /**
+     * Memastikan akun admin default dari konfigurasi tersedia dan passwordnya
+     * selalu sama dengan ROOT_PASSWORD saat ini.
+     */
     public User ensureRootAdmin(String rootUsername, String rootPassword) throws ValidationException {
         if (rootUsername == null || rootUsername.trim().isEmpty()) {
             throw new ValidationException("ROOT_USERNAME tidak boleh kosong");
@@ -52,13 +57,18 @@ public class AuthUseCase {
         if (rootPassword == null || rootPassword.isEmpty()) {
             throw new ValidationException("ROOT_PASSWORD tidak boleh kosong");
         }
-        return userRepository.findByUsername(rootUsername.trim())
-                .orElseGet(() -> userRepository.saveNew(
-                        rootUsername.trim(),
-                        PasswordHasher.hash(rootPassword),
-                        "Administrator",
-                        Role.ADMIN
-                ));
+        String username = rootUsername.trim();
+        String passwordHash = PasswordHasher.hash(rootPassword);
+        Optional<User> existing = userRepository.findByUsername(username);
+        if (existing.isEmpty()) {
+            return userRepository.saveNew(username, passwordHash, "Administrator", Role.ADMIN);
+        }
+        User admin = existing.get();
+        if (!passwordHash.equals(admin.getPasswordHash())) {
+            admin.changePasswordHash(passwordHash);
+            userRepository.update(admin);
+        }
+        return admin;
     }
 
     private void validateCredentials(String username, String password, String fullName)
